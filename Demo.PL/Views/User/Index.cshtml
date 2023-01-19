@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+
+    <h1>All Users</h1>
+    <br />
+    <br />
+
+
+    <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a>
+
+    <form asp-action="Index">
+        <div class="row align-items-center justify-content-center mt-4">
+            <div class=" col-8">
+                <input type="text" class="form-control" name="SearchValue" placeholder="Example : Taghreed55@gmail.com " />
+            </div>
+            <div class=" col-4">
+                <input type="submit" value="Search" class="btn btn-success" />
+            </div>
+        </div>
+    </form>
+
+
+    @if (Model?.Count() > 0 && ViewBag.search == null)
+    {
+        <table class="mt-4 table table-striped table-hover w-100">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(U => U.Id)</th>
+                    <th>@Html.DisplayNameFor(U => U.Email)</th>
+                    <th>@Html.DisplayNameFor(U => U.UserName)</th>
+                    <th>@Html.DisplayNameFor(U => U.PhoneNumber)</th>
+                    <th>@Html.DisplayNameFor(U => U.IsAgree)</th>
+                    <th>Details </th>
+                    <th>Update </th>
+                    <th>Delete </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+
+                        <td>@Html.DisplayFor(M => user.Id)</td>
+                        <td>@Html.DisplayFor(M => user.Email)</td>
+                        <td>@Html.DisplayFor(M => user.UserName)</td>
+                        <td>@Html.DisplayFor(M => user.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(M => user.IsAgree)</td>
+                        <partial name="_ButtonsPartialView" model="@user.Id" />
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if (ViewBag.search != null)
+    {
+        <div class="mt-5 alert-warning">
+            <h3>@ViewBag.search</h3>
+        </div>
+    }
+    else
+    {
+        <div class="mt-5 alert-warning">
+            <h3>There is No Users</h3>
+        </div>
+    }
+
+</div>

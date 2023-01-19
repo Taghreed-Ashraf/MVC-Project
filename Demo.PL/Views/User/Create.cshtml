@@ -1,0 +1,60 @@
+﻿@model CreateUserViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+
+    <h1>Create New User</h1>
+    <form asp-action="Create">
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <label class="col-form-label" asp-for="UserName"></label>
+            <input class="form-control" asp-for="UserName" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Password"></label>
+            <input class="form-control" asp-for="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label" asp-for="ConfirmPassword"></label>
+            <input class="form-control" asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="form-group form-check my-3">
+            <input class="form-check-input" type="checkbox" asp-for="IsAgree" />
+            <label class="form-check-label" asp-for="IsAgree"></label>
+            <span asp-validation-for="IsAgree" class="text-danger"></span>
+        </div>
+
+        
+        <div class="form-group mb-4">
+            <label class="col-form-label" asp-for="PhoneNumber"></label>
+            <input class="form-control" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <input type="submit" value="submit" class="btn btn-primary" /> |
+        <a asp-action="Index" class="btn btn-light">Back To List</a>
+    </form>
+
+</div>
+
+
+@section validationScriptSection {
+    <partial name="_ValidationScriptsPartial" />
+}
+

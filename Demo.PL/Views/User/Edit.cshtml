@@ -1,0 +1,48 @@
+﻿@model ApplicationUser
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <h1>Update The User</h1>
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="All"></div>
+        <input hidden asp-for="Id" />
+        
+
+        <div class="form-group">
+            <label class="col-form-label" asp-for="UserName"></label>
+            <input class="form-control" asp-for="UserName" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label" asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group mb-4">
+            <label class="col-form-label" asp-for="PhoneNumber"></label>
+            <input class="form-control" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <input type="submit" value="Save" class="btn btn-primary" /> |
+        <a asp-action="Index" class="btn btn-light">Back To List</a>
+    </form>
+
+</div>
+
+
+
+@section validationScriptSection {
+    @* <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+
+    <partial name="_ValidationScriptsPartial" />
+}

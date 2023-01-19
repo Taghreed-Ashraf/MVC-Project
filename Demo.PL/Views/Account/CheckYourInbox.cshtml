@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "CheckYourInbox";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+
+    var emailll = TempData["emaillll"] as string;
+}
+
+<h1>Check Your Inbox</h1>
+
+<div class="main-agileinfo">
+    <div class="agileits-top">
+        <div class="body">
+            <div class="mb-4">
+                <p>Password reset Link has Sent to Your Email. Please Check Your inbox :)</p>
+            </div>
+            <div>
+                @if (emailll.Contains("gmail"))
+                {
+                    <a href="http://mail.google.com/mail/u/0/#inbox" class="text-danger">Your Inbox</a>
+                }
+                else
+                {
+                    <a href="http://mail.yahoo.com/mail/u/0/#inbox" class="text-danger">Your Inbox</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
